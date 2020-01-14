@@ -3,17 +3,17 @@
     display: flex;
     flex-direction: row;
 }
-
 .Todo-task:hover {
     background-color: #DBDBDB;
     cursor: pointer;
 }
 
+
 .Author {
     color: grey;
 }
 
-.deleteBtn {
+.button {
     display: flex;
     align-items: center;
     padding: 0px 15px;
@@ -26,4 +26,17 @@
     font-size: larger;
     padding: 2px;
     border-radius: 25%;
+}
+
+.arrowIcon {
+    color: grey;
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    padding: 2px;
+    border-radius: 25%;
+}
+.arrowIcon:hover {
+    color: black;
+    cursor: pointer;
 }

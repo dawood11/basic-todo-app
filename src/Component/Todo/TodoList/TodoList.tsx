@@ -26,7 +26,7 @@ const TodoList: React.FC<IProps> = (props: IProps) => {
 		await setTodos(filteredList);
 	};
 
-	const handleTodoTaskClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, todo: Todo) => {
+	const handleTodoTaskClick = (event: React.MouseEvent<HTMLDivElement | HTMLSpanElement, MouseEvent>, todo: Todo) => {
 		event.preventDefault();
 		history.push(APP_ROUTES.userProfile + todo.userId);
 	};
@@ -37,7 +37,7 @@ const TodoList: React.FC<IProps> = (props: IProps) => {
 				todos.map((todo: Todo) =>
 					<div key={todo.id}>
 						<div className={'Todo-task'}>
-							<div className={'deleteBtn'}>
+							<div className={'button'}>
 								<span className={'deleteIcon'} onClick={(event) => handleDeleteBtnClick(event, todo)}>
 									x
 								</span>
@@ -47,6 +47,11 @@ const TodoList: React.FC<IProps> = (props: IProps) => {
 								<p>{todo.body}</p>
 								<br />
 								<span className={'Author'}>By: userId {todo.userId}</span>
+							</div>
+							<div className={'button'}>
+								<span className={'arrowIcon'} onClick={(event) => handleTodoTaskClick(event, todo)}>
+									&gt;
+								</span>
 							</div>
 						</div>
 						<hr />

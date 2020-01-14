@@ -1,5 +1,7 @@
 .Todo-task {
-    margin: 0px 40px;
+    padding: 5px 40px;
+    display: flex;
+    flex-direction: row;
 }
 
 .Todo-task:hover {
@@ -7,6 +9,21 @@
     cursor: pointer;
 }
 
+.Author {
+    color: grey;
+}
+
 .deleteBtn {
-    align-items: flex-end;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.deleteIcon {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    padding: 2px;
+    border-radius: 25%;
 }

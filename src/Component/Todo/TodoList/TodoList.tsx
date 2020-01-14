@@ -19,7 +19,7 @@ const TodoList: React.FC<IProps> = (props: IProps) => {
 		setTodos(props.todosProp);
 	}, [props.todosProp]);
 
-	const handleDeleteBtnClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, todo: Todo) => {
+	const handleDeleteBtnClick = async (event: React.MouseEvent<HTMLSpanElement, MouseEvent>, todo: Todo) => {
 		event.preventDefault();
 		const filteredList = await deleteTodo(todo.id);
 
@@ -35,16 +35,20 @@ const TodoList: React.FC<IProps> = (props: IProps) => {
 		<div>
 			{
 				todos.map((todo: Todo) =>
-					<div key={todo.id} className={'Todo-task'}>
-						<div onClick={(event) => handleTodoTaskClick(event, todo)}>
-							<h4>{todo.title}</h4>
-							<p>{todo.body}</p>
-							<br />
+					<div key={todo.id}>
+						<div className={'Todo-task'}>
+							<div className={'deleteBtn'}>
+								<span className={'deleteIcon'} onClick={(event) => handleDeleteBtnClick(event, todo)}>
+									x
+								</span>
+							</div>
+							<div onClick={(event) => handleTodoTaskClick(event, todo)}>
+								<h4>{todo.title}</h4>
+								<p>{todo.body}</p>
+								<br />
+								<span className={'Author'}>By: userId {todo.userId}</span>
+							</div>
 						</div>
-						<span>By: userId {todo.userId}</span>
-						<button className={'deleteBtn'} onClick={(event) => handleDeleteBtnClick(event, todo)}>
-							Delete
-						</button>
 						<hr />
 					</div>
 				)

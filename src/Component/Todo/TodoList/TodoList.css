@@ -1,0 +1,12 @@
+.Todo-task {
+    margin: 0px 40px;
+}
+
+.Todo-task:hover {
+    background-color: #DBDBDB;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    align-items: flex-end;
+}

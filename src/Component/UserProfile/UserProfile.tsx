@@ -4,12 +4,14 @@ import React, { useEffect, useState } from 'react';
 
 import { User } from '../../Redux/User/User.types';
 import { getUser } from '../../Redux/User/User.actions';
+import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
 
 const UserProfile: React.FC = () => {
 	const [user, setUser] = useState<User | null>();
 	const { userIdParam } = useParams();
 	const [userLabel, setUserLabel] = useState<string>('User not found...');
+	const history = useHistory();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -29,6 +31,11 @@ const UserProfile: React.FC = () => {
 		fetchData();
 	}, [userIdParam]);
 
+	const handleGoBackBtn = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		event.preventDefault();
+		history.goBack();
+	};
+
 	return (
 		<div>
 			{user
@@ -39,8 +46,9 @@ const UserProfile: React.FC = () => {
 					</span>
 				</div>
 				: <p>{userLabel}</p>
-
 			}
+			<hr />
+			<button onClick={(event) => handleGoBackBtn(event)}>Go back</button>
 		</div>
 	);
 };
